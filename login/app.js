@@ -19,6 +19,12 @@ const templating = require('./templating.js');
 // 引入router
 const controller = require('./controller.js');
 
+// 引入静态文件
+if (! isProduction) {
+    let staticFiles = require('./static-files.js');
+    app.use(staticFiles('/static/', __dirname + '/static'));
+}
+
 // 引入body解析功能
 app.use(bodyParser);
 
@@ -35,7 +41,7 @@ app.use(controller());
 
 // 对于任何请求，app首先都将打印请求方法和链接
 app.use(async (ctx, next) => {
-    console.log(`Process： url -- ${ctx.request.path}...`);
+    console.log(`Process： url -- ${ctx.request.href}...`);
     await next();
 });
 
