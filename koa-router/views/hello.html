@@ -1,0 +1,31 @@
+
+<!-- 继承base.html -->
+{% extends 'base.html' %}
+
+<!-- header -->
+{% block header %}
+<body>
+    <h1>{{ header }}</h1>
+    <p>{{ name }}</p>
+</body>
+{% endblock %}
+
+<!-- body -->
+{% block body %}
+<body>
+    <h1> body -- {{body}}</h1>
+    {% for f in fruits %}
+    <p>{{ f }}</p>
+    {% endfor %}
+</body>
+{% endblock %}
+
+<!-- footer -->
+{% block footer %}
+<body>
+    <h1> footer -- {{footer}} </h1>
+    {% for f in fruits %}
+    <p>{{ f }}</p>
+    {% endfor %}
+</body>
+{% endblock %}
